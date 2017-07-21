@@ -618,10 +618,10 @@ static NSString *const kShareOptionUrl = @"url";
 
   // with WhatsApp, we can share an image OR text+url.. image wins if set
   if (image != nil) {
-    NSString * savePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/whatsAppTmp.wai"];
+    NSString * savePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/whatsAppTmp.jpeg"];
     [UIImageJPEGRepresentation(image, 1.0) writeToFile:savePath atomically:YES];
     _documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
-    _documentInteractionController.UTI = @"net.whatsapp.image";
+    _documentInteractionController.UTI = @"public.image";
     _documentInteractionController.delegate = self;
     _command = command;
     [_documentInteractionController presentOpenInMenuFromRect:CGRectZero inView:self.viewController.view animated: YES];
